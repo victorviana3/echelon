@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/victorviana3/echelon/issues"
   },
-  "homepage": "https://github.com/victorviana3/echelon#readme"
+  "homepage": "https://github.com/victorviana3/echelon#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
