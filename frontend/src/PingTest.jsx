@@ -1,25 +1,25 @@
+import { useState } from "react";
+
 function PingTest() {
-  const url = "http://localhost:3001/ping";
-  let result = "";
-  return (
-    <>
-      <button onClick={() => (result = test())}>Ping Test</button>
-      <h1>O resultado é: {result}</h1>
-    </>
-  );
-  async function test() {
+  const [response, setResponse] = useState("");
+  async function ping() {
+    const url = "http://localhost:3001/ping";
     try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response ${response.status}`);
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`Response ${res.status}`);
       }
-      const result = response.json();
-      console.log(result);
+      setResponse(await res.text());
     } catch (e) {
       console.error(e);
     }
-    return response.text();
   }
+  return (
+    <>
+      <button onClick={ping}>Ping Test</button>
+      <h1>O resultado é: {response}</h1>
+    </>
+  );
 }
 
 export default PingTest;
